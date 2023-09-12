@@ -1,0 +1,92 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: antoinedga
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  name: user_id
+                  type: Integer
+              - column:
+                  name: first_name
+                  type: varchar(255)
+              - column:
+                  name: last_name
+                  type: varchar(255)
+              - column:
+                  name: email
+                  type: varchar(255)
+              - column:
+                  name: password
+                  type: varchar(255)
+            tableName: user_entity
+  - changeSet:
+      id: 2
+      author: antoinedga
+      changes:
+        - createIndex:
+            columns:
+              - column:
+                  name: user_id
+            indexName: idx_user_id
+            tableName: user_entity
+            unique: true
+  - changeSet:
+      id: 3
+      author: antoinedga
+      changes:
+        - addAutoIncrement:
+            columnDataType: Integer
+            columnName: user_id
+            defaultOnNull: false
+            generationType: ALWAYS
+            startWith: 100
+            tableName: user_entity
+  - changeSet:
+      id: 4
+      author: antoinedga
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  name: contact_entity_id
+                  type: Integer
+              - column:
+                  name: user_id
+                  type: Integer
+              - column:
+                  name: first_name
+                  type: varchar(255)
+              - column:
+                  name: last_name
+                  type: varchar(255)
+              - column:
+                  name: email
+                  type: varchar(255)
+              - column:
+                  name: phone_number
+                  type: varchar(25)
+            tableName: contact_entity
+  - changeSet:
+      id: 5
+      author: antoinedga
+      changes:
+        - createIndex:
+            columns:
+              - column:
+                  name: contact_entity_id
+            indexName: idx_contact_entity
+            tableName: contact_entity
+            unique: true
+  - changeSet:
+      id: 6
+      author: antoinedga
+      changes:
+        - addAutoIncrement:
+            columnDataType: Integer
+            columnName: contact_entity_id
+            defaultOnNull: false
+            generationType: ALWAYS
+            startWith: 100
+            tableName: contact_entity
