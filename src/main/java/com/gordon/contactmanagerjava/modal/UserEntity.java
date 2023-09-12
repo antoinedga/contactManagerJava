@@ -1,20 +1,19 @@
 package com.gordon.contactmanagerjava.modal;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import jakarta.persistence.*;
+import lombok.*;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity(name = "user_entity")
+@ToString
+@NamedQueries({
+    @NamedQuery(name = "user_find_all", query = "FROM user_entity"),
+    @NamedQuery(name = "find_by_name", query = "FROM user_entity u WHERE u.firstName = :first_name")
+})
 public class UserEntity {
 
     @Id

@@ -6,6 +6,8 @@ import com.gordon.contactmanagerjava.repository.UserEntityRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
 public class DataInitializer implements CommandLineRunner {
 
@@ -37,8 +39,36 @@ public class DataInitializer implements CommandLineRunner {
         System.out.println(test);
 
         test.setLastName("Alvarez");
-        test = userHibernateManager.updateUser(test);
-        System.out.println(test);
+//        test = userHibernateManager.updateUser(test);
+//        System.out.println(test);
 
+
+        // for the get all
+        UserEntity userEntity1 = new UserEntity();
+        userEntity1.setEmail("andrea.gordon@gmail.com");
+        userEntity1.setFirstName("Andrea");
+        userEntity1.setLastName("Gordon");
+        userEntity1.setPassword("password");
+
+        userEntity1 = userHibernateManager.saveNewUser(userEntity1);
+
+        List<UserEntity> users = userHibernateManager.listUserEntityWithLastName("gordon");
+        System.out.println(users);
+        //userHibernateManager.deleteUserEntity(test.getUserId());
+//
+//        test = userHibernateManager.getById(test.getUserId());
+//        System.out.println("Test is after delete: " + test);
+
+        users = userHibernateManager.findAll();
+        System.out.println(users);
+
+        userEntity1 = userHibernateManager.findByName("Antoine");
+        System.out.println(userEntity1);
+
+        userEntity1 = userHibernateManager.findByNameWithCriteria("Andrea");
+        System.out.println(userEntity1);
+
+        userEntity1 = userHibernateManager.findByLastNameWithNative("Gordon");
+        System.out.println(userEntity1);
     }
 }
