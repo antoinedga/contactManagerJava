@@ -1,5 +1,7 @@
 package com.gordon.contactmanagerjava;
 
+import com.github.javafaker.Faker;
+import com.gordon.contactmanagerjava.modal.ContactEntity;
 import com.gordon.contactmanagerjava.modal.UserEntity;
 import com.gordon.contactmanagerjava.repository.ContactEntityRepository;
 import com.gordon.contactmanagerjava.repository.UserEntityRepository;
@@ -80,7 +82,25 @@ class ContactManagerJavaApplicationTests {
 
     @Test
     public void test_findByQueryJpaNamedQuery() {
-        assertThat(userEntityRepository.findByFirstNameNamed("Andrea"), is(notNullValue()));
+       // assertThat(userEntityRepository.findByFirstNameNamed("Andrea"), is(notNullValue()));
+    }
+
+    @Test
+    public void test_contactEntity_paging() {
+        setUpContactRepository();
+    }
+
+    public void setUpContactRepository() {
+        Faker faker = new Faker();
+
+        for (int i = 0; i < 50; i++) {
+            ContactEntity contactEntity = new ContactEntity();
+            contactEntity.setFirstName(faker.name().firstName());
+            contactEntity.setLastName(faker.name().lastName());
+            contactEntity.setPhoneNumber(faker.phoneNumber().phoneNumber());
+            contactEntity.setEmail(faker.internet().emailAddress());
+            contactEntityRepository.save(contactEntity);
+        }
     }
 }
 

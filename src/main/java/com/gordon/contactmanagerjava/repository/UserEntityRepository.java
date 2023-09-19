@@ -30,8 +30,8 @@ public interface UserEntityRepository extends JpaRepository<UserEntity, Integer>
 
     @Query(value = "select * from user_entity u where u.first_name = :firstName", nativeQuery = true)
     UserEntity findUserByNativeQuery(String firstName);
-
-    UserEntity findByFirstNameNamed(String firstName);
+    // name repo
+   // UserEntity findByFirstNameNamed(String firstName);
 
 
 }

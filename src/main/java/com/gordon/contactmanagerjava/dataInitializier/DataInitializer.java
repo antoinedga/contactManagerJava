@@ -1,21 +1,25 @@
 package com.gordon.contactmanagerjava.dataInitializier;
 
+import com.github.javafaker.Faker;
 import com.gordon.contactmanagerjava.dao.UserHibernateManager;
+import com.gordon.contactmanagerjava.modal.ContactEntity;
 import com.gordon.contactmanagerjava.modal.UserEntity;
+import com.gordon.contactmanagerjava.repository.ContactEntityRepository;
 import com.gordon.contactmanagerjava.repository.UserEntityRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
-
-import java.util.List;
 
 @Component
 public class DataInitializer implements CommandLineRunner {
 
     private final UserEntityRepository userRepository;
     private final UserHibernateManager userHibernateManager;
-    public DataInitializer(UserEntityRepository userRepository, UserHibernateManager userHibernateManager) {
+    private final ContactEntityRepository contactEntityRepository;
+
+    public DataInitializer(UserEntityRepository userRepository, UserHibernateManager userHibernateManager, ContactEntityRepository contactEntityRepository) {
         this.userRepository = userRepository;
         this.userHibernateManager = userHibernateManager;
+        this.contactEntityRepository = contactEntityRepository;
     }
 
 //    @Override // hibernate testing
@@ -73,12 +77,18 @@ public class DataInitializer implements CommandLineRunner {
 //    }
 
     // for repositories
+//    @Override
+//    public void run(String... args) throws Exception {
+//        UserEntity userEntity;
+//        System.out.println(userRepository.findById(129));
+//
+//        userEntity = userRepository.findUserEntitiesByFirstName("Andrea");
+//        System.out.println(userEntity);
+//
+//    }
+
     @Override
     public void run(String... args) throws Exception {
-        UserEntity userEntity;
-        System.out.println(userRepository.findById(129));
 
-        userEntity = userRepository.findUserEntitiesByFirstName("Andrea");
-        System.out.println(userEntity);
     }
 }
