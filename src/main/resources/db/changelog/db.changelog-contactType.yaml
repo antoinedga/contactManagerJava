@@ -1,0 +1,11 @@
+databaseChangeLog:
+  - changeSet:
+      id: 10
+      author: antoinedga
+      changes:
+        - addColumn:
+            columns:
+              - column:
+                  name: phone_type
+                  type: varchar(30)
+            tableName: contact_entity

@@ -1,12 +1,8 @@
 package com.gordon.contactmanagerjava.modal;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Data;
-import lombok.Getter;
 
 @Entity(name = "contact_entity")
 @Data
@@ -18,5 +14,8 @@ public class ContactEntity {
     private String firstName;
     private String lastName;
     private String email;
+    @Enumerated(EnumType.STRING)
+    private PhoneTypeEnum phoneType;
     private String phoneNumber;
 }
+

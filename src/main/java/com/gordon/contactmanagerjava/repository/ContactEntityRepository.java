@@ -10,5 +10,5 @@ import java.util.List;
 public interface ContactEntityRepository extends JpaRepository<ContactEntity, Integer> {
 
     public List<ContactEntity> findContactEntitiesByUserId(Integer id);
-    Page<ContactEntity> findContactEntities(Pageable pageable);
+//    Page<ContactEntity> findContactEntities(Pageable pageable);
 }

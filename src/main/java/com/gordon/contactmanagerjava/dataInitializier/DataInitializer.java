@@ -3,7 +3,7 @@ package com.gordon.contactmanagerjava.dataInitializier;
 import com.github.javafaker.Faker;
 import com.gordon.contactmanagerjava.dao.UserHibernateManager;
 import com.gordon.contactmanagerjava.modal.ContactEntity;
-import com.gordon.contactmanagerjava.modal.UserEntity;
+import com.gordon.contactmanagerjava.modal.PhoneTypeEnum;
 import com.gordon.contactmanagerjava.repository.ContactEntityRepository;
 import com.gordon.contactmanagerjava.repository.UserEntityRepository;
 import org.springframework.boot.CommandLineRunner;
@@ -89,6 +89,10 @@ public class DataInitializer implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-
+        Faker faker = new Faker();
+        ContactEntity entity = new ContactEntity();
+        entity.setEmail(faker.internet().emailAddress());
+        entity.setPhoneType(PhoneTypeEnum.HOME);
+        contactEntityRepository.save(entity);
     }
 }
