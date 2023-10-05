@@ -3,6 +3,10 @@ package com.gordon.contactmanagerjava.modal;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
+import org.springframework.data.annotation.LastModifiedDate;
+
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -25,5 +29,10 @@ public class UserEntity {
     private String lastName;
     private String email;
     private String password;
+    @CreationTimestamp
+    @Column(updatable = false)
+    private LocalDateTime createdDate;
+    @LastModifiedDate
+    private LocalDateTime lastModifiedDate;
 
 }

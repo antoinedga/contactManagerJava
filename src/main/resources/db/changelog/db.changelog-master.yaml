@@ -3,3 +3,5 @@ databaseChangeLog:
       file: db/changelog/baseline-changelog.yml
   - include:
       file: db/changelog/db.changelog-contactType.yaml
+  - include:
+      file: db/changelog/db.changelog-createdDateLastModifiedDate.yaml

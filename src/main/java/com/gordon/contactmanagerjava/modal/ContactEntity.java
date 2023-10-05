@@ -3,6 +3,10 @@ package com.gordon.contactmanagerjava.modal;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import org.hibernate.annotations.CreationTimestamp;
+import org.springframework.data.annotation.LastModifiedDate;
+
+import java.time.LocalDateTime;
 
 @Entity(name = "contact_entity")
 @Data
@@ -17,5 +21,10 @@ public class ContactEntity {
     @Enumerated(EnumType.STRING)
     private PhoneTypeEnum phoneType;
     private String phoneNumber;
+    @CreationTimestamp
+    @Column(updatable = false)
+    private LocalDateTime createdDate;
+    @LastModifiedDate
+    private LocalDateTime lastModifiedDate;
 }
 
